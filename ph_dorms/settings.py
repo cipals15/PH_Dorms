@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG = True
+DEBUG = True;
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,7 +135,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-	os.path.join(PROJECT_ROOT,'static')
+	os.path.join(PROJECT_ROOT,'static'),
 )
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'dorms/static/images/')
