@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="padding-small">
+  <h4>All dorms near {{dormschool.school_name}}</h4>
+  <ul>  
+  {% for dorm in dorm_list %}<li><a href="{%url 'dorm-detail' dorm.0 %}">{{ dorm.1 }}</a></li>{% endfor %}
+  </ul>
+</div>
+{% endblock %}

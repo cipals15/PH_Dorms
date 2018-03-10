@@ -1,0 +1,87 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="padding-small">
+
+  <h1><b>Room #{{ dormroom.room_number }}</b></h4>   
+  <h5>Building: <a href="{{ dormroom.room_dorm.get_absolute_url }}">{{dormroom.room_dorm}}</a> ({{dormroom.room_floor}}).</h5>
+  
+  <div id="myCarousel" class="carousel slide image-standard" data-ride="carousel" width="460" height="345">
+<ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+	<li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+
+<div class="carousel-inner" role="listbox">
+ {% for image in images %} 
+    {% if forloop.first %}
+	<div class="item active image-standard">
+        <img src="{{ image.dorm_image.url }}" alt="Image" >
+    </div>
+    {% else %}
+    <div class="item image-standard">
+        <img src="{{ image.dorm_image.url }}" alt="Image" >
+    </div>
+	{% endif %}
+{% endfor %}
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+  <div>
+  <div class="inline-block"><i class="fas fa-users"></i> Guests: {{ dormroom.room_maxusers}}</div>
+  <div class="inline-block"><i class="far fa-registered"></i> Rooms: {{dormroom.room_count}}</div>
+  <div class="inline-block"><i class="fas fa-bed"></i> Beds: </div>
+  </div>
+  
+  <div class="amenities">
+  <div class="titlediv">About this room</div>
+  <div class="padding-bottom"><div>{{dormroom.room_description }}</div></div>
+  </div>
+  
+  <div class="amenities">
+  <div class="titlediv">Basic Information</div>
+  <div><div>Floor: {{dormroom.room_floor}}</div></div>
+  <div><div>Number of Rooms: {{dormroom.room_count}}</div></div>
+  <div class="padding-bottom"><div>Availability: {{dormroom.room_availability}}</div></div>
+  </div>
+  
+  <div class="amenities">
+  <div class="titlediv">Amenities</div>
+  <div><i class="fas fa-snowflake"></i> Aircon <div>{{amenities.0.room_aircon}}</div></div>
+  <div><i class="fas fa-wifi"></i> Wifi <div>{{amenities.0.room_wifi}}</div></div>
+  <div><i class="fas fa-utensils"></i> Kitchen <div>{{amenities.0.room_kitchen}}</div></div>
+  <div><i class="fas fa-fire-extinguisher"></i> Fire Extenguisher <div>{{amenities.0.room_fireextenguisher}}</div></div>
+  <div><i class="fas fa-tv"></i> Television <div>{{amenities.0.room_tv}}</div></div>
+  <div class="padding-bottom"><i class="fas fa-tint"></i> Washing Machine <div>{{amenities.0.room_washing}}</div></div>
+  </div>
+  
+  <div class="amenities">
+  <div class="titlediv">Contact Details</div>
+  <div><div>Caretaker: {{dormroom.room_caretaker}}</div></div>
+  <div><div>Contact Number: {{dormroom.room_contact_no}}</div></div>
+  <div><div>Email Address: {{dormroom.room_contact_email}}</div></div>
+  <div class="padding-bottom"></div>
+  </div>
+  
+  <div class="amenities">
+  <div class="titlediv">House Rules</div>
+  <div class="padding-bottom"><div>{{dormroom.room_house_rules}}</div></div>
+  </div>
+  
+  <div class="amenities">
+  <div><div>Date added: {{dormroom.room_date_added}}</div></div>
+  <div><div>Date updated: {{dormroom.room_date_updated}}</div></div>
+  </div>
+  
+  <div class="padding-bottom"><a href="">Report an issue</a></div>
+</div>
+{% endblock %}
