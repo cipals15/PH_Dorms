@@ -16,7 +16,7 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 # Create your views here.
 @login_required
 def index(request):
-	num_dorms = Dorm.objects.all().count()
+	#num_dorms = Dorm.objects.all().count()
 	
 	num_visits = request.session.get('num_visits',0)
 	request.session['num_visits'] = num_visits+1
@@ -24,7 +24,7 @@ def index(request):
 	return render(
 		request,
 		'index.html',
-		context = {'num_dorms':num_dorms,'num_visits': num_visits},
+		context = {'num_visits': num_visits},
 	)
 
 class DormsListView(LoginRequiredMixin, generic.ListView):
