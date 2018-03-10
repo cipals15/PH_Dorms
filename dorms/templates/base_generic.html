@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  {% block title %}<title>Sampaloc Dorms</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+{% if user.is_authenticated %}
+  <div class="container-fluid">
+{% else %}
+   <div class="container-fluid container-login-color">
+{% endif %}
+
+
+
+      {% block sidebar %}
+	  {% if user.is_authenticated %}
+	  <div class="row row-navigation">
+      <div class="orange-background col-sm-12">
+	  
+	  <nav>
+      <ul class="sidebar-nav sidebar-background">
+			<li><a href="{% url 'index' %}"><i class="fas fa-home"></i> HOME</a></li>
+			<li><a href="{% url 'dorms' %}"><i class="fas fa-building"></i> BY DORM</a></li>
+			<li><a href="{% url 'schools' %}"><i class="fas fa-graduation-cap"></i> BY SCHOOL</a></li>
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'logout' %}?next={{request.path}}">LOGOUT</a></li>
+			{% else %}
+				<li><a href="{% url 'login' %}?next={{request.path}}">LOGIN</a></li>
+			{% endif %}
+      </ul>
+	  </nav>
+	  </div>
+	   </div>
+	  {% endif %}
+     {% endblock %}
+	<div class="row row-body">
+      <div class="login-options col-sm-12">
+      {% block content %}
+		  
+	  {% endblock %}
+	  
+	  {% block pagination %}
+	  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+	  {% endblock %} 
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

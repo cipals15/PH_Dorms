@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class="welcome-color-logged-in">WELCOME TO U-BELT DORMS</h1>
+
+  <h6 class="welcome-color-logged-in-sub">U-Belt Dorms is your gateway to finding the right dorm here in Sampaloc, Manila.</h6>
+
+  <form id="searchform" action="{% url 'dorms' %}" method="get" accept-charset="utf-8">
+      <input class="dormsearch" id="searchbox" name="q" type="text" placeholder="Find the dorm you need.">
+	  <button class="btn btn-warning dormbutton" ><i class="fas fa-search"></i> Search</button>
+   </form>  
+
+{% endblock %}

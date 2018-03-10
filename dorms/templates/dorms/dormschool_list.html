@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <form id="searchform" action="{% url 'dorms' %}" method="get" accept-charset="utf-8">
+      <input class="dormsearch" id="searchbox" name="q" type="text" placeholder="Find the dorm you need.">
+   </form>   
+   
+	<h4 class="padding-small">Browse dorms by school proximity</h4>
+	
+	<div class="container">
+	<div class="padding-bottom row">
+	{% if dormschool_list %}	
+		{% for school in dormschool_list %}
+		<div class="padding-small col-xs-6 col-sm-4 col-md-3 col-lg-2">
+		<div><img class="image-container" src="{{ school.school_logo.url }}"/></div>
+		<div class="text-center padding-title"><a class="hyperlink" href="{% url 'schools-detail' school.id %}">{{ school }}</a></div>
+		</div>		
+		{% endfor %}
+	{% else %}
+		<p>There are no rooms in our records.</p>
+	{% endif %}
+	</div>
+	</div>
+
+{% endblock %}
