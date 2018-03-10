@@ -1,1 +1,1 @@
-web: gunicorn ph_dorms.wsgi --log-file
+web: gunicorn ph_dorms.wsgi --log-file -
