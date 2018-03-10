@@ -78,14 +78,9 @@ WSGI_APPLICATION = 'ph_dorms.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-		'USER': 'postgres',
-		'PASSWORD': 'password',
-		'HOST':'127.0.0.1',
-		'PORT':'65432',		
-    }
+    'default': dj_database_url.config(
+	    default=config('DATABASE_URL')
+    )
 }
 
 
