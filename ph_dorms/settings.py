@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # DEBUG = config('DEBUG', default=False, cast=bool)
 DEBUG = True;
 
-ALLOWED_HOSTS = ['phdorms.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['phdormsv2.herokuapp.com','127.0.0.1']
 
 
 # Application definition
