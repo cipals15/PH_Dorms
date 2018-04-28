@@ -133,11 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = 'dorms/static/'
 STATICFILES_DIRS = (
 	os.path.join(BASE_DIR,'static'),
 )
-MEDIA_URL = '/images/'
+MEDIA_URL = 'dorms/static/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'dorms/static/')
 
 LOGIN_URL = 'login'
