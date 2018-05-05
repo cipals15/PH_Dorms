@@ -137,7 +137,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 	os.path.join(BASE_DIR,'static'),
 )
-MEDIA_URL = '/images/'
+MEDIA_URL = 'dorms/static/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'dorms/static/images/')
 
 LOGIN_URL = 'login'
